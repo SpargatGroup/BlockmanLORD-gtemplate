@@ -17,8 +17,6 @@ kotlin {
 dependencies {
     //build in
     testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
     //kotlin
     implementation(libs.kotlin.stdlib)
 }
