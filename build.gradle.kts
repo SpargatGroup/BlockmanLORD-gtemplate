@@ -4,6 +4,7 @@ buildscript {
         google()
         gradlePluginPortal()
         mavenCentral()
+        maven("https://blockmanlauncher.vercel.app/archive/maven")
     }
     dependencies {
         classpath(libs.kotlin.gradle.plugin)
