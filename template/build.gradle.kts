@@ -1,6 +1,6 @@
 plugins {
     `java-gradle-plugin`
-    kotlin("jvm")
+    alias(libs.plugins.kotlin.jvm)
 }
 group = "spargat.blockman.blockmanlord.games.template"
 version = "1.0.0"

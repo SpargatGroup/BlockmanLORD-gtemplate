@@ -11,5 +11,5 @@ buildscript {
     }
 }
 plugins {
-    kotlin("jvm") version "2.1.10" apply false
+    alias(libs.plugins.kotlin.jvm) apply false
 }
