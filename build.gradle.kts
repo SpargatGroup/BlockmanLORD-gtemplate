@@ -12,4 +12,5 @@ buildscript {
 }
 plugins {
     alias(libs.plugins.kotlin.jvm) apply false
+    id("spargat.blockman.blockmanlord") version "1.0.0" apply false
 }
