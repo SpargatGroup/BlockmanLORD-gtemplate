@@ -3,9 +3,13 @@ on:
   - push
   - pull_request
 jobs:
-  build-linux:
-    name: Build on Ubuntu
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        jvm: [17, 21]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -13,21 +17,19 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '${{ matrix.jvm }}'
+      - name: Setup Project
+        if: matrix.os == 'ubuntu-latest'
+        run: bash project.sh ${{ matrix.jvm }} test
       - name: Grant execute permission for gradlew
+        if: matrix.os == 'ubuntu-latest'
         run: chmod +x ./gradlew
       - name: Build with Gradle
+        if: matrix.os == 'ubuntu-latest'
         run: ./gradlew build
-  build-windows:
-    name: Build on Windows
-    runs-on: windows-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set up Java 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+      - name: Setup Project
+        if: matrix.os == 'windows-latest'
+        run: .\project.bat ${{ matrix.jvm }} test
       - name: Build with Gradle on Windows
+        if: matrix.os == 'windows-latest'
         run: .\gradlew.bat build

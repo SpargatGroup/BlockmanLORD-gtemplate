@@ -14,5 +14,5 @@ dependencyResolutionManagement {
         maven("https://blockmanlauncher.vercel.app/archive/maven")
     }
 }
-rootProject.name = "Template Project"
+rootProject.name = "template Project"
 include(":template")

@@ -6,14 +6,14 @@ plugins {
 group = "spargat.blockman.blockmanlord.games.template"
 version = "1.0.0"
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_{JVM_VERSION}
+    targetCompatibility = JavaVersion.VERSION_{JVM_VERSION}
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of({JVM_VERSION}))
     }
 }
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain({JVM_VERSION})
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
     }
